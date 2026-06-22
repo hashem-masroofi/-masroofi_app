@@ -1,0 +1,25 @@
+name: بناء تطبيق مصروفي APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: تحميل الكود
+      uses: actions/checkout@v4
+
+    - name: بناء APK بـ Flet
+      uses: flet-dev/build-apk-action@v1
+      with:
+        python-version: '3.11'
+
+    - name: رفع ملف الـ APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: masroofi-app
+        path: dist/*.apk
