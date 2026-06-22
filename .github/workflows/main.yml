@@ -13,13 +13,19 @@ jobs:
     - name: تحميل الكود
       uses: actions/checkout@v4
 
-    - name: بناء APK بـ Flet
-      uses: flet-dev/build-apk-action@v1
+    - name: تثبيت بايثون
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+
+    - name: تثبيت Flet
+      run: pip install flet
+
+    - name: بناء APK
+      run: flet build apk --verbose
 
     - name: رفع ملف الـ APK
       uses: actions/upload-artifact@v4
       with:
         name: masroofi-app
-        path: dist/*.apk
+        path: build/apk/*.apk
