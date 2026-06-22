@@ -1,0 +1,11 @@
+[project]
+name = "masroofi"
+version = "1.0.0"
+description = "تطبيق مصروفي"
+requires-python = ">=3.9"
+dependencies = ["flet>=0.24.0"]
+
+[tool.flet]
+org = "com.zaki"
+product = "Masroofi"
+company = "Zaki"
